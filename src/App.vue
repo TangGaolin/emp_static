@@ -27,7 +27,6 @@ export default {
         display: block;
         line-height: 1;
     }
-
     .to-button {
         margin-bottom: 3.4rem;
     }
