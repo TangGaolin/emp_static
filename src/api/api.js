@@ -54,3 +54,12 @@ export function getEmpOrderList(params) {
         data
     });
 }
+
+export function resetPassword(params) {
+    const data = params
+    return fetch({
+        url:  process.env.API_ROOT + '/emp/resetPassword',
+        method: 'post',
+        data
+    });
+}

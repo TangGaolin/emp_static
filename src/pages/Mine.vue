@@ -56,6 +56,17 @@
             </yd-cell-item>
         </yd-cell-group>
 
+        <yd-cell-group>
+            <yd-cell-item arrow type="link" href="update-password">
+                <span slot="left">修改密码</span>
+                <span slot="right">前往</span>
+            </yd-cell-item>
+        </yd-cell-group>
+
+        <p style="padding: 10px">
+            <yd-button size="large" type="danger" @click.native="logout">退出</yd-button>
+        </p>
+
 
     </div>
 </template>
@@ -84,14 +95,24 @@
                     emp_id: this.empInfo.emp_id
                 }).then((response) => {
                     if(0 !== response.statusCode) {
-                        MessageBox('提示', response.msg);
+                        this.$dialog.notify({
+                            mes: response.msg,
+                            timeout: 2000
+                        })
                     }else{
                         this.empData = response.data
                     }
                 }).catch((error) => {
                     console.log(error)
                 })
+            },
+            logout() {
+                this.$store.dispatch('logoutAction',{}).then(() => {
+                    // 退出成功
+                    this.$router.push('/login')
+                })
             }
+
         }
 
 

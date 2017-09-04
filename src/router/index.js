@@ -7,9 +7,10 @@ const Layout    = resolve  => require(['../pages/Layout'], resolve)
 const User      = resolve  => require(['../pages/Users'], resolve)
 const Order     = resolve  => require(['../pages/OrderList'], resolve)
 const Mine      = resolve  => require(['../pages/Mine'], resolve)
+const UpdatePassword      = resolve  => require(['../pages/UpdatePassword'], resolve)
 
 const UserInfo      = resolve  => require(['../pages/UserInfo'], resolve)
-const OrderInfo     = resolve  => require(['../pages/Mine'], resolve)
+const OrderInfo      = resolve  => require(['../pages/OrderInfo'], resolve)
 
 Vue.use(Router)
 
@@ -66,6 +67,11 @@ const router = new Router({
                     name: "mines",
                     path: "mine-info",
                     component: Mine
+                },
+                {
+                    name: "update-pwd",
+                    path: "update-password",
+                    component: UpdatePassword
                 }
             ]
         },

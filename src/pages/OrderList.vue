@@ -8,15 +8,19 @@
     <div>
         <yd-navbar slot="navbar" title="单据流水">
         </yd-navbar>
+
         <yd-infinitescroll :callback="getUserList" ref="lsdemo">
+
+
             <yd-list theme="4" slot="list">
-                <yd-cell-item v-for="item in userList" arrow type="link" href="order/order-info" :key = "item.id">
+                <yd-cell-item v-for="item in userList" arrow type="link" href="order-info" :key = "item.id">
                     <span slot="left"> {{ item.order_desc }} </span>
-                    <span slot="right">
-                        {{
-                            0 == item.from_type ?  ("业绩" + item.yeji) : "消耗" + item.xiaohao + "/手工" + item.fee
-                        }}
-                    </span>
+                    <span slot="right"> {{ item.add_time }} </span>
+                    <!--<span slot="right">-->
+                        <!--{{-->
+                            <!--0 == item.from_type ?  ("业绩" + item.yeji) : "消耗" + item.xiaohao + "/手工" + item.fee-->
+                        <!--}}-->
+                    <!--</span>-->
                 </yd-cell-item>
             </yd-list>
             <!-- 数据全部加载完毕显示 -->
@@ -60,7 +64,10 @@
                     cur_page: this.cur_page
                 }).then((response) => {
                     if (0 !== response.statusCode) {
-                        MessageBox('提示', response.msg);
+                        this.$dialog.notify({
+                            mes: response.msg,
+                            timeout: 2000
+                        })
                     } else {
                         const _list = response.data.data
                         this.userList = [...this.userList, ..._list]
