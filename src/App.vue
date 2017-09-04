@@ -21,14 +21,11 @@ export default {
         background-color: #fafafa;
     }
     .page-title {
-        font-size: 18px;
+        font-size: 25px;
         margin: 15px auto;
         text-align: center;
         display: block;
         line-height: 1;
-    }
-    .to-button {
-        margin-bottom: 3.4rem;
     }
 
 </style>

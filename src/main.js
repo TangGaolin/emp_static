@@ -3,16 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import MintUI from 'mint-ui'
+import YDUI from 'vue-ydui'
 import store from './store'
-
 import './components'
+
 
 Vue.config.productionTip = false
 
-Vue.use(MintUI)
+Vue.use(YDUI)
 
-import 'mint-ui/lib/style.css'
+import 'vue-ydui/dist/ydui.rem.css'
+
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

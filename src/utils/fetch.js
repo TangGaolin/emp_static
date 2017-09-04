@@ -17,7 +17,6 @@ export function fetch(options) {
       })
       .catch(error => {
         console.log(error) // for debug
-        LoadingBar.finish()
         reject(error)
       })
 
