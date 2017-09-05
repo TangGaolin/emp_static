@@ -18,7 +18,7 @@ export default {
         left: -1px;
         bottom: 0px;
         width: 100%;
-        background-color: #fafafa;
+        background-color: #f5f5f5;
     }
     .page-title {
         font-size: 25px;

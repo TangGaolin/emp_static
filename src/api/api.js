@@ -63,3 +63,21 @@ export function resetPassword(params) {
         data
     });
 }
+
+export function getOrderInfo(params) {
+    const data = params
+    return fetch({
+        url:  process.env.API_ROOT + '/emp/getOrderInfo',
+        method: 'post',
+        data
+    });
+}
+
+export function serverLog(params) {
+    const data = params
+    return fetch({
+        url:  process.env.API_ROOT + '/emp/serverLog',
+        method: 'post',
+        data
+    });
+}

@@ -9,11 +9,10 @@
         <yd-navbar slot="navbar" title="单据流水">
         </yd-navbar>
 
-        <yd-infinitescroll :callback="getUserList" ref="lsdemo">
-
+        <yd-infinitescroll :callback="getEmpOrderList" ref="lsdemo">
 
             <yd-list theme="4" slot="list">
-                <yd-cell-item v-for="item in userList" arrow type="link" href="order-info" :key = "item.id">
+                <yd-cell-item v-for="item in userList" arrow type="link" :href="'order-info?order_id='+item.order_id + '&from_type='+item.from_type + '&order_desc='+item.order_desc"  :key="item.id">
                     <span slot="left"> {{ item.order_desc }} </span>
                     <span slot="right"> {{ item.add_time }} </span>
                     <!--<span slot="right">-->
@@ -50,10 +49,10 @@
             ])
         },
         created() {
-            this.getUserList()
+            this.getEmpOrderList()
         },
         methods: {
-            getUserList(is_search = 0) {
+            getEmpOrderList(is_search = 0) {
                 if (is_search) {
                     this.cur_page = 0
                     this.userList = []
@@ -76,7 +75,6 @@
                             this.$refs.lsdemo.$emit('ydui.infinitescroll.loadedDone')
                             return
                         }
-
                         // 单次请求数据完毕
                         this.$refs.lsdemo.$emit('ydui.infinitescroll.finishLoad')
                         this.cur_page++
