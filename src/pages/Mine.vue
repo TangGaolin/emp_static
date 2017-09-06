@@ -51,7 +51,7 @@
             </yd-cell-item>
 
             <yd-cell-item>
-                <span slot="left">本月消耗</span>
+                <span slot="left">本月手工</span>
                 <span slot="right">{{ empData.fee_sum }}</span>
             </yd-cell-item>
         </yd-cell-group>
