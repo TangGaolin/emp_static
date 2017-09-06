@@ -6,7 +6,7 @@
 
 <template>
     <div>
-        <yd-navbar slot="navbar" title="会员列表" fixed>
+        <yd-navbar slot="navbar" title="会员列表">
         </yd-navbar>
         <yd-infinitescroll :callback="getUserList" ref="lsdemo">
             <yd-list theme="4" slot="list">

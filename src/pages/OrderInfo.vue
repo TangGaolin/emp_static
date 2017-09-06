@@ -3,7 +3,7 @@
 
 <template>
     <yd-layout>
-        <yd-navbar slot="navbar" :title="$route.query.order_desc" fixed>
+        <yd-navbar slot="navbar" :title="$route.query.order_desc">
             <router-link to="/order/order-list" slot="left">
                 <yd-navbar-back-icon></yd-navbar-back-icon>
             </router-link>
@@ -15,6 +15,13 @@
             <yd-cell-item>
                 <span slot="left">时间</span>
                 <span slot="right">{{ orderInfo.add_time }}</span>
+            </yd-cell-item>
+        </yd-cell-group>
+
+        <yd-cell-group>
+            <yd-cell-item>
+                <span slot="left">收银员</span>
+                <span slot="right">{{ orderInfo.cashier_name }}</span>
             </yd-cell-item>
         </yd-cell-group>
 

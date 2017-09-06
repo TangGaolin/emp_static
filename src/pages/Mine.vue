@@ -3,7 +3,7 @@
 
 <template>
     <div>
-        <yd-navbar slot="navbar" title="我" fixed>
+        <yd-navbar slot="navbar" title="我">
         </yd-navbar>
         <yd-cell-group>
             <yd-cell-item>

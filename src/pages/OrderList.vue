@@ -6,7 +6,7 @@
 
 <template>
     <div>
-        <yd-navbar slot="navbar" title="单据流水" fixed>
+        <yd-navbar slot="navbar" title="单据流水">
         </yd-navbar>
 
         <yd-infinitescroll :callback="getEmpOrderList" ref="lsdemo">
@@ -38,7 +38,6 @@
         data() {
             return {
                 userList: [],
-                user_name_phone: "",
                 cur_page:1,
                 limit: 15
             }
@@ -52,11 +51,8 @@
             this.getEmpOrderList()
         },
         methods: {
-            getEmpOrderList(is_search = 0) {
-                if (is_search) {
-                    this.cur_page = 0
-                    this.userList = []
-                }
+            getEmpOrderList() {
+
                 getEmpOrderList({
                     emp_id: this.empInfo.emp_id,
                     limit: this.limit,

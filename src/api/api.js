@@ -108,3 +108,33 @@ export function getOrderTime(params) {
         data
     });
 }
+
+export function getUserItemList(params) {
+    const data = params
+    return fetch({
+        url:  process.env.API_ROOT + '/emp/getUserItemList',
+        method: 'post',
+        data
+    });
+}
+
+
+
+export function getOrderList(params) {
+    const data = params
+    return fetch({
+        url:  process.env.API_ROOT + '/emp/getOrderList',
+        method: 'post',
+        data
+    });
+}
+
+
+export function getUseOrderList(params) {
+    const data = params
+    return fetch({
+        url:  process.env.API_ROOT + '/emp/getUseOrderList',
+        method: 'post',
+        data
+    });
+}

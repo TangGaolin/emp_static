@@ -11,6 +11,9 @@ const UpdatePassword      = resolve  => require(['../pages/UpdatePassword'], res
 
 const UserInfo      = resolve  => require(['../pages/UserInfo'], resolve)
 const OrderInfo      = resolve  => require(['../pages/OrderInfo'], resolve)
+const UserItems      = resolve  => require(['../pages/UserItems'], resolve)
+const UserOrderList      = resolve  => require(['../pages/UserOrderList'], resolve)
+const UserUseOrderList      = resolve  => require(['../pages/UserUseOrderList'], resolve)
 
 Vue.use(Router)
 
@@ -36,7 +39,22 @@ const router = new Router({
                     name: "useInfo",
                     path: "user-info",
                     component: UserInfo
-                }
+                },
+                {
+                    name: "useItem",
+                    path: "user-item",
+                    component: UserItems
+                },
+                {
+                    name: "userOrder",
+                    path: "user-order",
+                    component: UserOrderList
+                },
+                {
+                    name: "userUseOrder",
+                    path: "user-useorder",
+                    component: UserUseOrderList
+                },
             ]
         },
         {

@@ -6,12 +6,11 @@
 
 <template>
     <div>
-        <yd-navbar slot="navbar" :title="userInfo.user_name" fixed>
+        <yd-navbar slot="navbar" :title="userInfo.user_name">
             <router-link to="/user" slot="left">
                 <yd-navbar-back-icon></yd-navbar-back-icon>
             </router-link>
         </yd-navbar>
-
         <br/>
         <yd-cell-group title = "用户信息">
             <yd-cell-item>
@@ -46,19 +45,19 @@
                 <span slot="right">{{ userInfo.debt }}</span>
             </yd-cell-item>
 
-            <yd-cell-item arrow type="link" href="update-password">
+            <yd-cell-item arrow type="link" :href="'user-item?uid='+$route.query.uid">
                 <span slot="left">拥有卡项</span>
                 <span slot="right">查看</span>
             </yd-cell-item>
         </yd-cell-group>
 
         <yd-cell-group title = "用户记录">
-            <yd-cell-item arrow type="link" href="update-password">
+            <yd-cell-item arrow type="link" :href="'user-order?uid='+$route.query.uid">
                 <span slot="left">购买记录</span>
                 <span slot="right">查看</span>
             </yd-cell-item>
 
-            <yd-cell-item arrow type="link" href="update-password">
+            <yd-cell-item arrow type="link" :href="'user-useorder?uid='+$route.query.uid">
                 <span slot="left">耗卡记录</span>
                 <span slot="right">查看</span>
             </yd-cell-item>
@@ -87,11 +86,10 @@
         </yd-button-group>
 
         <br/>
-
         <yd-cell-group title = "预约记录">
             <yd-timeline class="demo-small-pitch">
                 <yd-timeline-item v-for="(item, index) in orderTimeData" :key="index">
-                    <p>{{item.remark}}</p>
+                    <p>{{ item.remark }}</p>
                     <p style="margin-top: 10px;">{{ item.emp_name }} &nbsp; {{item.order_time}}</p>
                 </yd-timeline-item>
             </yd-timeline>
@@ -177,11 +175,11 @@
                         })
                     } else {
                         this.orderTimeData = response.data
-                        this.orderTimeData.sort(function(a, b) {
-                                var al = new Date(a.order_time).getTime();
-                                var bl = new Date(b.order_time).getTime();
-                                return al - bl;
-                        })
+                        if(this.orderTimeData.length > 0) {
+                            this.orderTimeData.sort(function(a, b) {
+                                return a.order_time > b.order_time;
+                            })
+                        }
                     }
                 }).catch((error) => {
                     console.log(error)
