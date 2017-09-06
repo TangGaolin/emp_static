@@ -81,3 +81,30 @@ export function serverLog(params) {
         data
     });
 }
+
+export function getUserDetail(params) {
+    const data = params
+    return fetch({
+        url:  process.env.API_ROOT + '/emp/getUserDetail',
+        method: 'post',
+        data
+    });
+}
+
+export function orderTime(params) {
+    const data = params
+    return fetch({
+        url:  process.env.API_ROOT + '/emp/orderTime',
+        method: 'post',
+        data
+    });
+}
+
+export function getOrderTime(params) {
+    const data = params
+    return fetch({
+        url:  process.env.API_ROOT + '/emp/getOrderTime',
+        method: 'post',
+        data
+    });
+}

@@ -6,7 +6,7 @@
 
 <template>
     <div>
-        <yd-navbar slot="navbar" title="会员列表">
+        <yd-navbar slot="navbar" title="会员列表" fixed>
         </yd-navbar>
         <yd-infinitescroll :callback="getUserList" ref="lsdemo">
             <yd-list theme="4" slot="list">
@@ -15,7 +15,7 @@
                     <input slot="right" type="text" v-model="user_name_phone" placeholder="姓名/手机" autocomplete="off">
                     <yd-button slot="right" type="primary" @click.native="getUserList(1)">搜索</yd-button>
                 </yd-cell-item>
-                <yd-cell-item v-for="item in userList" arrow type="link" href="user-info" :key = "item.uid">
+                <yd-cell-item v-for="item in userList" arrow type="link" :href="'user-info?uid='+item.uid"   :key = "item.uid">
                     <span slot="left"> {{ item.user_name }} </span>
                     <span slot="right">{{ item.phone_no }}</span>
                 </yd-cell-item>

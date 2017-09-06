@@ -3,7 +3,7 @@
 
 <template>
     <yd-layout>
-        <yd-navbar slot="navbar" :title="$route.query.order_desc">
+        <yd-navbar slot="navbar" :title="$route.query.order_desc" fixed>
             <router-link to="/order/order-list" slot="left">
                 <yd-navbar-back-icon></yd-navbar-back-icon>
             </router-link>
@@ -25,14 +25,16 @@
         <div  v-if="1 == $route.query.from_type">
             <UseOrderInfo :orderInfo = orderInfo></UseOrderInfo>
         </div>
-        <yd-cell-group v-if="orderInfo.remark.length > 0" title="服务记录">
-            <yd-timeline class="demo-small-pitch">
-                <yd-timeline-item v-for="(item, index) in orderInfo.remark" :key="index">
-                    <p>{{item.remark}}</p>
-                    <p style="margin-top: 10px;">{{ item.emp_name }} &nbsp; {{item.add_time}}</p>
-                </yd-timeline-item>
-            </yd-timeline>
-        </yd-cell-group>
+        <div v-if="orderInfo.remark && orderInfo.remark .length > 0">
+            <yd-cell-group  title="服务记录">
+                <yd-timeline class="demo-small-pitch">
+                    <yd-timeline-item v-for="(item, index) in orderInfo.remark" :key="index">
+                        <p>{{item.remark}}</p>
+                        <p style="margin-top: 10px;">{{ item.emp_name }} &nbsp; {{item.add_time}}</p>
+                    </yd-timeline-item>
+                </yd-timeline>
+            </yd-cell-group>
+        </div>
 
         <yd-cell-group title="添加记录">
             <yd-cell-item>

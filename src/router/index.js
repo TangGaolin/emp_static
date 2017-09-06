@@ -93,7 +93,7 @@ router.beforeEach((to, from, next) => {
     }
 
     if (typeof(account.empInfo) === "undefined") {
-        return next(`/login?redirect=${encodeURIComponent(to.path)}`)
+        return next('/login')
     }else {
         return next()
     }

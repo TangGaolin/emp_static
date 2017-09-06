@@ -12,12 +12,12 @@
         <br/>
         <yd-cell-group>
             <yd-cell-item>
-                <span slot="left">手 机：</span>
-                <yd-input slot="right" required v-model="userInfo.user" regex="mobile"  placeholder="请输入用户名"></yd-input>
+                <span slot="left">账 号：</span>
+                <yd-input slot="right" required type="tel" v-model="userInfo.user"  placeholder="请输入登录账号"></yd-input>
             </yd-cell-item>
             <yd-cell-item>
                 <span slot="left">密 码：</span>
-                <yd-input slot="right" type="password" v-model="userInfo.password" placeholder="请输入密码"></yd-input>
+                <yd-input slot="right" required type="password" v-model="userInfo.password" placeholder="请输入密码"></yd-input>
             </yd-cell-item>
         </yd-cell-group>
 

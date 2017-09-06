@@ -6,7 +6,7 @@
 
 <template>
     <div>
-        <yd-navbar slot="navbar" title="单据流水">
+        <yd-navbar slot="navbar" title="单据流水" fixed>
         </yd-navbar>
 
         <yd-infinitescroll :callback="getEmpOrderList" ref="lsdemo">
