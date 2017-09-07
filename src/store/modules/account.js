@@ -7,11 +7,11 @@ const state = {
 }
 const mutations = {
     [types.SET_ACCOUNT] (state, account) {
-        state.userInfo = account
+        state.empInfo = account
         Cookies.set('empinfo', account)
     },
     [types.UNSET_ACCOUNT] (state) {
-    	state.userInfo = null
+    	state.empInfo = null
         Cookies.remove('empinfo')
     }
 }

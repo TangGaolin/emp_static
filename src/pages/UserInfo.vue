@@ -95,8 +95,6 @@
             </yd-timeline>
         </yd-cell-group>
 
-
-
     </div>
 </template>
 
@@ -119,6 +117,12 @@
                 hourFormat: '<span style="color:#F00;">{value}<i style="font-size: 12px;margin-left: 1px;">时</i></span>',
                 minuteFormat: '<span style="color:#0BB20C;">{value}<i style="font-size: 12px;margin-left: 1px;">分</i></span>'
             }
+        },
+
+        computed: {
+            ...mapGetters([
+                'empInfo',
+            ])
         },
 
         created() {
@@ -144,6 +148,7 @@
             submitOrderTime() {
                 orderTime({
                     uid:this.userInfo.uid,
+                    shop_id: this.empInfo.shop_id,
                     remark: this.remark,
                     order_time: this.orderTime
                 }).then((response) => {

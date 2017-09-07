@@ -107,7 +107,6 @@ router.beforeEach((to, from, next) => {
     if(to.path === '/login') {
         return next()
     }
-
     if (!account.empInfo) {
         return next('/login')
     }else {
