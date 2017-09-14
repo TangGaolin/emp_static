@@ -15,11 +15,6 @@
                 <yd-cell-item v-for="item in userList" arrow type="link" :href="'order-info?order_id='+item.order_id + '&from_type='+item.from_type + '&order_desc='+item.order_desc"  :key="item.id">
                     <span slot="left"> {{ item.order_desc }} </span>
                     <span slot="right"> {{ item.add_time }} </span>
-                    <!--<span slot="right">-->
-                        <!--{{-->
-                            <!--0 == item.from_type ?  ("业绩" + item.yeji) : "消耗" + item.xiaohao + "/手工" + item.fee-->
-                        <!--}}-->
-                    <!--</span>-->
                 </yd-cell-item>
             </yd-list>
             <!-- 数据全部加载完毕显示 -->

@@ -32,6 +32,7 @@
         <div  v-if="1 == $route.query.from_type">
             <UseOrderInfo :orderInfo = orderInfo></UseOrderInfo>
         </div>
+
         <div v-if="orderInfo.remark && orderInfo.remark .length > 0">
             <yd-cell-group  title="服务记录">
                 <yd-timeline class="demo-small-pitch">

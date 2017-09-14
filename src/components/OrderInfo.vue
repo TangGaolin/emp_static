@@ -91,7 +91,7 @@
 
                 <yd-cell-item>
                     <span slot="left">充值折扣</span>
-                    <span slot="right">{{ (orderInfo.worth_money / row.order_info * 10).toFixed(2) }}</span>
+                    <span slot="right">{{ (orderInfo.worth_money / orderInfo.order_info * 10).toFixed(2) }}</span>
                 </yd-cell-item>
             </yd-cell-group>
 
