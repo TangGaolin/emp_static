@@ -17,6 +17,7 @@
                 </yd-cell-item>
                 <yd-cell-item v-for="item in userList" arrow type="link" :href="'user-info?uid='+item.uid"   :key = "item.uid">
                     <span slot="left"> {{ item.user_name }} </span>
+                    <span slot="left" v-if="'店长' == empInfo.job"> &nbsp;({{ item.emp_name }}) </span>
                     <span slot="right">{{ item.phone_no }}</span>
                 </yd-cell-item>
             </yd-list>
@@ -55,12 +56,18 @@
                     this.cur_page = 0
                     this.userList = []
                 }
-                getUsers({
-                    emp_id: this.empInfo.emp_id,
+
+                let query = {
                     user_name_phone: this.user_name_phone,
                     limit: this.limit,
                     cur_page: this.cur_page
-                }).then((response) => {
+                }
+                if("店长" === this.empInfo.job) {
+                    query['shop_id'] = this.empInfo.shop_id
+                }else{
+                    query['emp_id'] = this.empInfo.emp_id
+                }
+                getUsers(query).then((response) => {
                     if (0 !== response.statusCode) {
                         this.$dialog.notify({
                             mes: response.msg,
@@ -74,7 +81,6 @@
                             this.$refs.lsdemo.$emit('ydui.infinitescroll.loadedDone')
                             return
                         }
-
                         // 单次请求数据完毕
                         this.$refs.lsdemo.$emit('ydui.infinitescroll.finishLoad')
                         this.cur_page++
