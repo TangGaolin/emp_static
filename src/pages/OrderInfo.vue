@@ -76,7 +76,10 @@
         },
         methods: {
             getOrderDetail() {
-                getOrderInfo(this.$route.query).then((response) => {
+                getOrderInfo({
+                    from_type: this.$route.query.from_type,
+                    order_id: this.$route.query.order_id
+                }).then((response) => {
                     if (0 !== response.statusCode) {
                         this.$dialog.notify({
                             mes: response.msg,
