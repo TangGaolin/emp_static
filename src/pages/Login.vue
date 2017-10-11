@@ -42,6 +42,7 @@
         },
         methods: {
             login() {
+
                 this.$store.dispatch('loginAction', this.userInfo).then((response) => {
                     this.$router.push('/')
                 })

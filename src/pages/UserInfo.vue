@@ -13,6 +13,7 @@
         </yd-navbar>
         <br/>
         <yd-cell-group title = "用户信息">
+
             <yd-cell-item>
                 <span slot="left">手机</span>
                 <span slot="right">{{ userInfo.phone_no }}</span>
