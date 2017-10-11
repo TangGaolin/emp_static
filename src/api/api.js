@@ -136,3 +136,23 @@ export function getUseOrderList(params) {
         data
     });
 }
+
+
+export function getEmployeeList(params) {
+    const data = params
+    return fetch({
+        url:  process.env.API_ROOT + '/emp/getEmployeeList',
+        method: 'post',
+        data
+    });
+}
+
+
+export function updateUser(params) {
+    const data = params
+    return fetch({
+        url:  process.env.API_ROOT + '/emp/updateUser',
+        method: 'post',
+        data
+    });
+}

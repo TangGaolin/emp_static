@@ -104,10 +104,6 @@
                 }).catch((error) => {
                     console.log(error)
                 })
-            },
-            test(){
-                console.log("xxx")
-                window.history.go(-1)
             }
         }
     }

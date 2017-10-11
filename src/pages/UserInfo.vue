@@ -14,7 +14,7 @@
         <br/>
         <yd-cell-group title = "用户信息">
 
-            <yd-cell-item>
+            <yd-cell-item arrow type="a" :href="'tel:'+userInfo.phone_no">
                 <span slot="left">手机</span>
                 <span slot="right">{{ userInfo.phone_no }}</span>
             </yd-cell-item>
@@ -23,6 +23,13 @@
                 <span slot="left">生日</span>
                 <span slot="right">{{ userInfo.birthday }}</span>
             </yd-cell-item>
+
+            <yd-cell-item arrow type="link" :href="'user-emp?uid='+$route.query.uid+'&emp_id='+userInfo.emp_id">
+                <span slot="left">美容师</span>
+                <span slot="right">{{ userInfo.emp_name }}</span>
+            </yd-cell-item>
+
+
         </yd-cell-group>
 
         <yd-cell-group title = "账户信息">
