@@ -47,12 +47,17 @@
         },
         methods: {
             getEmpOrderList() {
-
-                getEmpOrderList({
-                    emp_id: this.empInfo.emp_id,
+                let query = {
                     limit: this.limit,
                     cur_page: this.cur_page
-                }).then((response) => {
+                }
+                if("店长" === this.empInfo.job) {
+                    query['shop_id'] = this.empInfo.shop_id
+                }else{
+                    query['emp_id'] = this.empInfo.emp_id
+                }
+
+                getEmpOrderList(query).then((response) => {
                     if (0 !== response.statusCode) {
                         this.$dialog.notify({
                             mes: response.msg,
