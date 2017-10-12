@@ -27,7 +27,6 @@ export function logout(params) {
     });
 }
 
-
 export function getEmpDataView(params) {
     const data = params
     return fetch({
@@ -152,6 +151,16 @@ export function updateUser(params) {
     const data = params
     return fetch({
         url:  process.env.API_ROOT + '/emp/updateUser',
+        method: 'post',
+        data
+    });
+}
+
+//获取门店数据接口
+export function getShopDataView(params) {
+    const data = params
+    return fetch({
+        url:  process.env.API_ROOT + '/emp/getShopDataView',
         method: 'post',
         data
     });

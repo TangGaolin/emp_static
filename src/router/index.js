@@ -15,6 +15,7 @@ const UserItems      = resolve  => require(['../pages/UserItems'], resolve)
 const UserOrderList      = resolve  => require(['../pages/UserOrderList'], resolve)
 const UserUseOrderList      = resolve  => require(['../pages/UserUseOrderList'], resolve)
 const UpdateEmp      = resolve  => require(['../pages/UpdateEmp'], resolve)
+const Shop      = resolve  => require(['../pages/Shop'], resolve)
 
 Vue.use(Router)
 
@@ -79,6 +80,19 @@ const router = new Router({
                     path: "order-info",
                     component: OrderInfo
                 }
+            ]
+        },
+        {
+            path: "/shop",
+            component: Layout,
+            redirect: '/shop/shop-data',
+            name: 'shop',
+            children: [
+                {
+                    name: "shopData",
+                    path: "shop-data",
+                    component: Shop
+                },
             ]
         },
         {
