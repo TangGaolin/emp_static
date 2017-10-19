@@ -154,6 +154,13 @@
                 })
             },
             submitOrderTime() {
+                if(this.orderTime < formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss')) {
+                    this.$dialog.notify({
+                        mes: "请选择正确的预约时间!",
+                        timeout: 2000
+                    })
+                    return
+                }
                 orderTime({
                     uid:this.userInfo.uid,
                     shop_id: this.empInfo.shop_id,
@@ -167,6 +174,9 @@
                         })
                     } else {
                         this.remark = ""
+                        this.$dialog.alert({
+                            mes: "预约成功!"
+                        })
                         this.getOrderTimeData()
                     }
                 }).catch((error) => {
@@ -197,11 +207,7 @@
                 }).catch((error) => {
                     console.log(error)
                 })
-
             }
-
-
-
         }
 
     };

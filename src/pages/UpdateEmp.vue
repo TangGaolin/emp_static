@@ -14,7 +14,7 @@
         <br/>
         <yd-cell-group title="单选">
             <yd-cell-item type="radio" v-for="emp in empList" :key="emp.emp_id">
-                <span slot="left">{{ emp.emp_name }}</span>
+                <span slot="left">{{ emp.emp_name }} ({{emp.user_num}})</span>
                 <input slot="right" type="radio" :value="emp.emp_id" v-model="selectEmp"/>
             </yd-cell-item>
         </yd-cell-group>

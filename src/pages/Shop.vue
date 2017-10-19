@@ -28,7 +28,7 @@
             </yd-cell-item>
         </yd-cell-group>
 
-        <yd-cell-group title = "预约记录">
+        <yd-cell-group title = "门店预约记录">
             <yd-timeline class="demo-small-pitch">
                 <yd-timeline-item v-for="(item, index) in orderTimeData" :key="index">
                     <p>{{ item.user_name }} : {{ item.remark }}</p>

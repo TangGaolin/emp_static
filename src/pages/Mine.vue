@@ -21,8 +21,6 @@
             </yd-cell-item>
         </yd-cell-group>
 
-
-
         <yd-cell-group>
             <yd-cell-item>
                 <span slot="left">今日业绩</span>
@@ -39,7 +37,6 @@
             </yd-cell-item>
         </yd-cell-group>
 
-
         <yd-cell-group>
             <yd-cell-item>
                 <span slot="left">本月业绩</span>
@@ -54,6 +51,16 @@
                 <span slot="left">本月手工</span>
                 <span slot="right">{{ empData.fee_sum }}</span>
             </yd-cell-item>
+        </yd-cell-group>
+
+
+        <yd-cell-group title = "我的预约">
+            <yd-timeline class="demo-small-pitch">
+                <yd-timeline-item v-for="(item, index) in orderTimeData" :key="index">
+                    <p>{{ item.user_name }} : {{ item.remark }}</p>
+                    <p style="margin-top: 10px;">{{item.order_time}}</p>
+                </yd-timeline-item>
+            </yd-timeline>
         </yd-cell-group>
 
         <yd-cell-group>
@@ -73,11 +80,13 @@
 
 <script>
     import { mapGetters } from 'vuex'
-    import { getEmpDataView } from '../api/api'
+    import { getEmpDataView, getOrderTime } from '../api/api'
+    import { formatDate } from '../utils/utils'
     export default {
         data () {
             return {
-                empData: {}
+                empData: {},
+                orderTimeData: []
             }
         },
         computed: {
@@ -87,6 +96,7 @@
         },
         created() {
             this.getEmpData()
+            this.getOrderTimeData()
         },
 
         methods: {
@@ -101,6 +111,29 @@
                         })
                     }else{
                         this.empData = response.data
+                    }
+                }).catch((error) => {
+                    console.log(error)
+                })
+            },
+
+            getOrderTimeData() {
+                getOrderTime({
+                    emp_id: this.empInfo.emp_id,
+                    start_time: formatDate(new Date(), 'yyyy-MM-dd'),
+                }).then((response) => {
+                    if (0 !== response.statusCode) {
+                        this.$dialog.notify({
+                            mes: response.msg,
+                            timeout: 2000
+                        })
+                    } else {
+                        this.orderTimeData = response.data
+                        if(this.orderTimeData.length > 0) {
+                            this.orderTimeData.sort(function(a, b) {
+                                return a.order_time > b.order_time;
+                            })
+                        }
                     }
                 }).catch((error) => {
                     console.log(error)
